@@ -1,0 +1,17 @@
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: "usuario"
+      POSTGRES_PASSWORD: "usuario1#"
+    ports:
+    - "5432:5432"
+
+# bot dir -> abrir no terminal integrado
+# No terminal:
+# docker-compose ps      ->> lista os containers do docker
+# docker-compose up -d   ->> cria o container 
+
+## PostgreSQL + Docker Compose ->> criando rapidamente ambientes 
+# https://renatogroffe.medium.com/postgresql-docker-compose-criando-rapidamente-ambientes-e-populando-bases-para-testes-6c4b9a4de313
