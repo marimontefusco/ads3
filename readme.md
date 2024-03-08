@@ -1,27 +1,26 @@
 ### Projeto API com FastAPI + PostgreSQL + Docker Compose
 
 ## Etapas Realizadas
-1. Criar estrutura do Projeto
-2. Escrever códigos dos arquivos
-3. Integrar com Docker
-4. Integrar com DBeaver
-5. Criar ambiente virtual 
-6. Subir no github
+1. Estruturação do Projeto
+2. Escrita dos códigos nos arquivos
+3. Integração com Docker
+4. Integrarção com DBeaver
+5. Criação do ambiente virtual 
+6. Envio para o Github
 
 ## 1. Estrutura do Projeto:
 repo_root:
 	/backend 
 	  /app
-			app.py
+			api.py
 	  /db
-    main.py
-    
+    main.py   
 	/frontend **
 	.gitignore
 	readme.md
 	docker-compose.yml
 
-## 2. Códigos dos arquivos:
+## 2. Códigos nos arquivos:
 - backend/main.py
 - backend/app/api.py
 - docker-compose.yml
