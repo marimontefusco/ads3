@@ -30,8 +30,8 @@ Terminal Integrado do Docker:
 docker-compose.yml -> bot dir -> Abrir no terminal integrado
 
 Comandos:
-docker-compose ps       ->> lista os containers do docker
-docker-compose up -d    ->> cria o container 
+<br/>docker-compose ps       ->> lista os containers do docker
+<br/>docker-compose up -d    ->> cria o container 
 
   #### Inserir print terminal do docker
 
@@ -66,7 +66,7 @@ source env/bin/activate
 
 
 No browser:
-http://localhost:8000/
+http://localhost:8002/tarefas
 #### colocar img browser
 
 ou http://localhost:8000/docs

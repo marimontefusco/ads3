@@ -12,20 +12,24 @@ tarefas = [
     }
 ]
 
-# nome da app
+# Instanciando a aplicação
 app = FastAPI()
 origins = [
     "http://localhost:3000",
     "localhost:3000",
 ]
 
+# CORS -> cross-origin resource sharing
+# Habilitando o acesso e a comunicação do client-side com o backend da aplicação
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware
     allow_origins=origins,
     allow_methods=["*"]
 )
+# permite que o frontend/usuário acesse e se comunique com o backend da aplicação, que está numa origem diferente do frontend
 
-# Métodos
+## Métodos ##
+# Pegar/Ler
 @app.get("/", tags=["root"])
 async def read_root() -> dict:  # converte o retorno em dicionario
     return {"message": "Welcome to your tarefa list."}
@@ -35,7 +39,7 @@ async def read_root() -> dict:  # converte o retorno em dicionario
 async def get_tarefas() -> dict:
     return {"data": tarefas}
 
-
+# Adicionar -> Adiciona tarefinha à lista (no fim da lista)
 @app.post("/tarefa", tags=["tarefas"])
 async def add_tarefa(tarefinha: dict) -> dict:
     tarefas.append(tarefinha)
@@ -43,5 +47,25 @@ async def add_tarefa(tarefinha: dict) -> dict:
         "data": {"Tarefa added."}
     }
 
+# Atualizar
+@app.put("/tarefa/{id}", tags=["tarefas"])
+async def update_tarefa(id: int, body: dict) -> dict:
+    for tarefinha in tarefas:
+        if int(tarefinha["id"]) == id:
+            tarefinha["item"] = body["item"]
+            return {
+                "data": f"Tarefa with id {id} not found."
+            }
 
-# crossorigin -> permite que a aplicação deixe passar os métodos para o frontend
+# Deletar
+@app.delete("/tarefa/{id}", tags=["tarefas"])
+async def delete_tarefa(id: int) -> dict:
+    for tarefinha in tarefas:
+        if int(tarefinha["id"]) == id:
+            tarefas.remove(tarefinha)
+            return {
+                "data": f"Tarefa with id {id} has been removed."
+            }
+    return {
+        "data": f"Tarefa com id {id} not found."
+    }
